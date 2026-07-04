@@ -1,66 +1,184 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# KANGMAS — Platform Penghubung Masyarakat dengan Tenaga Pertukangan Terpercaya
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <img src="https://img.shields.io/badge/Laravel-11.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" alt="Laravel">
+  <img src="https://img.shields.io/badge/React-19.x-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React">
+  <img src="https://img.shields.io/badge/Flutter-3.x-02569B?style=for-the-badge&logo=flutter&logoColor=white" alt="Flutter">
+  <img src="https://img.shields.io/badge/Tailwind_CSS-3.x-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS">
+  <img src="https://img.shields.io/badge/MySQL-8.x-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL">
 </p>
 
-## About Laravel
+**KANGMAS** adalah aplikasi berbasis platform (Full-Stack Web & Mobile App) yang mempertemukan masyarakat yang membutuhkan layanan perbaikan atau pembangunan rumah dengan tenaga pertukangan (mitra tukang) profesional, terverifikasi, dan terdekat di wilayahnya.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Fitur Utama
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Untuk Masyarakat / Pengguna (Web & Mobile)
+- **Pencarian & Rekomendasi Pintar**: Temukan tukang terdekat menggunakan kalkulasi jarak (*Haversine formula*) berdasarkan koordinat lokasi GPS.
+- **Kategori Layanan Lengkap**: Solusi untuk perbaikan Kelistrikan & Kabel, Saluran & Pompa Air, serta Konstruksi & Bangunan.
+- **Pemesanan Mudah**: Buat pesanan layanan perbaikan dengan melampirkan foto bukti kerusakan, deskripsi, dan titik lokasi.
+- **Riwayat & Ulasan**: Pantau status pesanan (*Pending, Diterima, Menunggu Persetujuan, Selesai, Dibatalkan*) serta berikan rating & ulasan kepada tukang.
 
-## Learning Laravel
+### Untuk Mitra Tukang
+- **Registrasi Mitra**: Pendaftaran online dengan verifikasi identitas (KTP, Foto Selfie) dan dokumen Portofolio.
+- **Manajemen Status Kerja**: Atur status ketersediaan kerja (*Available / Busy*) secara real-time.
+- **Manajemen Pesanan**: Terima, tolak, dan selesaikan pesanan masuk langsung dari genggaman.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Untuk Admin Portal (Web)
+- **Dashboard Analitik Interaktif**: Visualisasi statistik pesanan, distribusi kategori tukang, dan performa mitra menggunakan grafik dinamis.
+- **Verifikasi Ketat**: Tinjau dokumen pendaftaran mitra tukang sebelum menyetujui (*Approve*), menolak (*Reject*), atau memblokir (*Blacklist*) mitra.
+- **Pemantauan Total**: Kelola seluruh data pengguna, mitra tukang, dan transaksi pesanan dalam satu dasbor terpusat.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Arsitektur & Teknologi
 
-## Laravel Sponsors
+| Komponen | Teknologi | Keterangan |
+| :--- | :--- | :--- |
+| **Backend API** | **Laravel 11** (PHP 8.2+) | RESTful API, Eloquent ORM, Sanctum Token Auth, Database Transactions |
+| **Web Frontend** | **React 19** + **Vite** | Single Page Application (SPA), Tailwind CSS, Lucide Icons, Recharts |
+| **Mobile App** | **Flutter** (Dart) | Cross-platform Android & iOS App, HTTP Client, Shared Preferences |
+| **Database** | **MySQL** | Relational Database Management System |
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+---
 
-### Premium Partners
+## Panduan Instalasi & Pengaturan (Local Setup)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+### 1. Prasyarat Sistem
+Pastikan komputer Anda telah terinstal:
+- **PHP** >= 8.2 & **Composer**
+- **Node.js** >= 18 & **npm**
+- **MySQL** / MariaDB Server (misal lewat XAMPP, Laragon, atau Docker)
+- **Flutter SDK** (opsional, jika ingin menjalankan aplikasi mobile)
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 2. Pengaturan Backend & Web (Laravel + React)
 
-## Code of Conduct
+1. **Clone Repositori**
+   ```bash
+   git clone https://github.com/username-anda/project-kangmas.git
+   cd project-kangmas
+   ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+2. **Instal Dependensi PHP & JavaScript**
+   ```bash
+   composer install
+   npm install
+   ```
 
-## Security Vulnerabilities
+3. **Konfigurasi Environment (`.env`)**
+   Salin file `.env.example` menjadi `.env`:
+   ```bash
+   cp .env.example .env
+   ```
+   Buka file `.env` dan sesuaikan konfigurasi koneksi database MySQL Anda:
+   ```ini
+   APP_NAME="KANGMAS"
+   APP_URL=http://localhost:8000
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=project_kangmas
+   DB_USERNAME=root
+   DB_PASSWORD=
 
-## License
+   # (Opsional) API Key Google Maps jika ingin fitur peta interaktif berfungsi penuh
+   VITE_GOOGLE_MAPS_API_KEY=your_api_key_here
+   ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+4. **Generate Application Key & Link Storage**
+   ```bash
+   php artisan key:generate
+   php artisan storage:link
+   ```
+
+5. **Migrasi Database & Seeding Data Awal**
+   Pastikan service MySQL Anda sudah berjalan dan database `project_kangmas` sudah dibuat, lalu jalankan:
+   ```bash
+   php artisan migrate --seed
+   ```
+   *Perintah ini akan membuat seluruh tabel struktur database beserta akun testing (Admin, User, dan Mitra Tukang beserta sampel portofolio).*
+
+---
+
+### 3. Menjalankan Aplikasi Web Secara Lokal
+
+Anda membutuhkan **2 terminal** yang berjalan bersamaan:
+
+- **Terminal 1 (Laravel API Server):**
+  ```bash
+  php artisan serve
+  ```
+  *Server API akan aktif di: `http://127.0.0.1:8000`*
+
+- **Terminal 2 (Vite Frontend Dev Server):**
+  ```bash
+  npm run dev
+  ```
+  *Aplikasi Web React akan aktif di: `http://localhost:5173` (atau sesuai url di terminal)*
+
+---
+
+### 4. Pengaturan & Menjalankan Aplikasi Mobile (Flutter)
+
+1. Masuk ke direktori mobile:
+   ```bash
+   cd mobile
+   ```
+2. Instal package dependensi Flutter:
+   ```bash
+   flutter pub get
+   ```
+3. Sesuaikan URL API Backend di file `lib/services/api_service.dart`:
+   - Jika menggunakan **Android Emulator**: ubah `baseUrl` ke `http://10.0.2.2:8000/api`
+   - Jika menggunakan **Perangkat Asli / iOS Simulator**: ubah `baseUrl` ke `http://localhost:8000/api` atau `http://<IP_LAN_KOMPUTER_ANDA>:8000/api`
+4. Jalankan aplikasi:
+   ```bash
+   flutter run
+   ```
+
+---
+
+## Akun Uji Coba (Test Accounts)
+
+Setelah menjalankan `php artisan migrate --seed`, Anda dapat menggunakan akun berikut untuk pengujian:
+
+| Role | Email | Password | Akses URL / Fitur |
+| :--- | :--- | :--- | :--- |
+| **Admin Portal** | `admin@kangmas.com` | `password` | Login di Web `http://localhost:8000/admin/login` |
+| **Pengguna / Masyarakat** | `user1@kangmas.com` | `password` | Login di Aplikasi Mobile / Web |
+| **Mitra Tukang** | `tukang1@kangmas.com` | `password` | Login di Aplikasi Mobile (Mitra) |
+
+---
+
+## Struktur Direktori Penting
+
+```text
+project-kangmas/
+├── app/Http/Controllers/Api/   # Controller logika bisnis API (Auth, Tukang, Order, Admin, Recommender)
+├── database/
+│   ├── migrations/             # Skema struktur tabel database
+│   └── seeders/                # Data sampel awal sistem
+├── mobile/                     # Proyek aplikasi mobile Flutter (Dart)
+│   └── lib/                    # Screen UI, provider state, dan service API mobile
+├── public/                     # Aset statis dan symlink storage file upload
+├── resources/
+│   ├── css/                    # Tailwind stylesheet
+│   └── js/                     # Proyek Frontend React (Pages, Components, Services)
+├── routes/
+│   ├── api.php                 # Daftar endpoint REST API
+│   └── web.php                 # Routing halaman web SPA
+├── .env.example                # Templat variabel environment
+└── README.md                   # Dokumentasi proyek
+```
+
+---
+
+## Kontribusi & Pengembang
+
+Proyek ini dikembangkan sebagai bagian dari Tugas Besar Mata Kuliah **Aplikasi Berbasis Platform** (Semester 6).
+
+---

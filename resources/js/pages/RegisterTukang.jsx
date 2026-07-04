@@ -27,7 +27,7 @@ export default function RegisterTukang({ onSubmit }) {
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: '', email: '', phone: '', password: '', 
-    kategori: 'Kelistrikan', experience: '', portofolio: null,
+    kategori: 'Kelistrikan & Kabel', experience: '', portofolio: null,
     ktp: null, selfie: null,
     locationType: 'manual', locationDetail: '', lat: null, lng: null
   });

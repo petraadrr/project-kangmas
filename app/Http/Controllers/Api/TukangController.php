@@ -29,46 +29,73 @@ class TukangController extends Controller
             'portofolio'     => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:5120',
         ]);
 
-        $user = User::create([
-            'name'         => $request->name,
-            'email'        => $request->email,
-            'password'     => Hash::make($request->password),
-            'role'         => 'tukang',
-            'phone_number' => $request->phone,
-        ]);
+        $ktpPath = null;
+        $selfiePath = null;
+        $portfolioPath = null;
 
-        $ktpPath = $request->file('ktp')->store('documents/ktp', 'public');
-        $selfiePath = $request->file('selfie')->store('documents/selfie', 'public');
-        $portfolioPath = $request->hasFile('portofolio') 
-            ? $request->file('portofolio')->store('documents/portfolios', 'public') 
-            : null;
+        \Illuminate\Support\Facades\DB::beginTransaction();
 
-        $profile = TukangProfile::create([
-            'user_id'         => $user->id,
-            'category'        => $this->mapCategory($request->kategori),
-            'experience'      => $request->experience ?? 0,
-            'latitude'        => $request->lat ?? 0,
-            'longitude'       => $request->lng ?? 0,
-            'lat'             => $request->lat ?? 0,
-            'lng'             => $request->lng ?? 0,
-            'address'         => $request->locationDetail ?? '-',
-            'status'          => 'pending',
-            'is_blacklisted'  => false,
-            'is_active'       => true,
-            'base_price'      => 0,
-            'ktp_path'        => $ktpPath,
-            'selfie_path'     => $selfiePath,
-            'portofolio_path' => $portfolioPath,
-        ]);
+        try {
+            $user = User::create([
+                'name'         => $request->name,
+                'email'        => $request->email,
+                'password'     => Hash::make($request->password),
+                'role'         => 'tukang',
+                'phone_number' => $request->phone,
+            ]);
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Pendaftaran berhasil dikirim. Menunggu verifikasi admin.',
-            'data'    => [
-                'user'    => $user,
-                'profile' => $profile
-            ]
-        ], 201);
+            $ktpPath = $request->file('ktp')->store('documents/ktp', 'public');
+            $selfiePath = $request->file('selfie')->store('documents/selfie', 'public');
+            $portfolioPath = $request->hasFile('portofolio') 
+                ? $request->file('portofolio')->store('documents/portfolios', 'public') 
+                : null;
+
+            $profile = TukangProfile::create([
+                'user_id'         => $user->id,
+                'category'        => $this->mapCategory($request->kategori),
+                'experience'      => $request->experience ?? 0,
+                'latitude'        => $request->lat ?? 0,
+                'longitude'       => $request->lng ?? 0,
+                'lat'             => $request->lat ?? 0,
+                'lng'             => $request->lng ?? 0,
+                'address'         => $request->locationDetail ?? '-',
+                'status'          => 'pending',
+                'is_blacklisted'  => false,
+                'is_active'       => true,
+                'base_price'      => 0,
+                'ktp_path'        => $ktpPath,
+                'selfie_path'     => $selfiePath,
+                'portofolio_path' => $portfolioPath,
+            ]);
+
+            \Illuminate\Support\Facades\DB::commit();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Pendaftaran berhasil dikirim. Menunggu verifikasi admin.',
+                'data'    => [
+                    'user'    => $user,
+                    'profile' => $profile
+                ]
+            ], 201);
+        } catch (\Exception $e) {
+            \Illuminate\Support\Facades\DB::rollBack();
+
+            if ($ktpPath) {
+                Storage::disk('public')->delete($ktpPath);
+            }
+            if ($selfiePath) {
+                Storage::disk('public')->delete($selfiePath);
+            }
+            if ($portfolioPath) {
+                Storage::disk('public')->delete($portfolioPath);
+            }
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Terjadi kesalahan saat mendaftar: ' . $e->getMessage()
+            ], 500);
+        }
     }
 
     public function getPendingTukangs(): JsonResponse

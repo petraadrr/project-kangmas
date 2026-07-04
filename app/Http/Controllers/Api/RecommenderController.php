@@ -29,6 +29,8 @@ class RecommenderController extends Controller
         $tukangs = TukangProfile::with('user:id,name,phone_number')
             ->where('category', $category)
             ->where('is_active', true)
+            ->where('status', 'approved')
+            ->where('is_blacklisted', false)
             ->get();
 
         $scored = $tukangs->map(function (TukangProfile $tukang) use ($userLat, $userLng) {

@@ -20,6 +20,12 @@ export default function AdminLogin() {
       
       const { user, token } = response.data.data;
 
+      if (user.role !== 'admin') {
+        setError('Akses ditolak. Halaman ini hanya untuk admin KANGMAS.');
+        setLoading(false);
+        return;
+      }
+
       localStorage.setItem('admin_token', token);
       localStorage.setItem('admin_user', JSON.stringify(user));
 
